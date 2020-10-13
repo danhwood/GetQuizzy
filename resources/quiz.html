@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <style>
+
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            z-index: 1;
+        }
+
+
+
+        .dropdown-content a:hover {background-color: gray;}
+
+        .dropdown:hover .dropdown-content {display: block;}
+
+        .dropdown:hover .dropbtn {background-color: gainsboro;}
+    </style>
+    <script>
+        "use strict";
+
+        function pageLoad() {
+            console.log("Invoked pageLoad() ");
+        }
+
+        function myFunction() {
+
+
+            let dataHTML = "";
+
+            for (let item of myJSONArray) {
+                dataHTML += "<tr><td>" + item.name + "</td><td>" + item.published + "</td><td> <button class='alertItemName' data-saleID='" + item.sales+"' data-itemID='" + item.name + "'>Click Me</button></td></tr>";
+            }
+            document.getElementById("gameWithButtons").innerHTML += dataHTML;
+
+            document.addEventListener("click", function (event) {
+                if (event.target.matches('.alertItemName')) {
+                    let itemName = event.target.getAttribute("data-itemID");
+                    let saleName = event.target.getAttribute("data-saleID");
+                    let userName = document.getElementById("FirstName").value;
+                    let lastName = document.getElementById("LastName").value;
+
+                    if((userName||lastName)=== ""){
+                        alert("Welcome" + ", you clicked on " + itemName + "and the total sales were " + saleName );
+                    } else {
+                        alert("Welcome " + userName + " " + lastName+ ", you clicked on " + itemName + "and the total sales were " + saleName );
+                    }
+                }
+            });
+        }
+
+    </script>
+
+</head>
+<body onload="myFunction()&&pageLoad()">
+
+<h1 class="main-title box-container">Please Select a Quiz</h1>
+
+<div class="box-container">
+    First Name: <input id="FirstName" type="text" class="inp">
+    Last Name: <input id="LastName" type="text" class="inp">
+</div>
+<br>
+<div class="dropdown">
+    <button class="dropbtn">Select a Quiz</button>
+    <div class="dropdown-content">
+        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">1</a>
+        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">2</a>
+        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">3</a>
+    </div>
+</div>
+
+<BR>
+<table id="gameWithButtons" class="box-container"></table>
+
+</body>
+</html>

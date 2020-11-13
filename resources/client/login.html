@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <script>
+        "use strict";
+
+        function validateForm() {
+            console.log("Invoked validateForm()");
+            let valid = true;
+
+            document.getElementById("usernameValidationText").innerHTML = "";
+            document.getElementById("passwordValidationText").innerHTML = "";  //clear these so if form validated again, messages are gone
+
+            if (document.getElementById("username").value === "") {
+                document.getElementById("usernameValidationText").innerHTML = "Please enter your username.";
+                valid = false;
+            }
+
+            if (!document.getElementById("password").checkValidity()) {
+                document.getElementById("passwordValidationText").innerHTML = "";
+                valid = false;
+            }
+
+            if (valid === true) {
+                postUserLogin()
+            }
+
+        }
+
+        function postUserLogin() {
+            console.log("Invoked postUserLogin() ");
+
+            var url = "/account/login";
+            var formData = new FormData(document.getElementById('login'));
+
+            fetch(url, {
+                method: "POST",
+                body: formData,
+            }).then(response => {
+                return response.json();                 //now return that promise to JSON
+            }).then(response => {
+                if (response.hasOwnProperty("Error")) {
+                alert("Username and password not recognised");
+            } else {
+                Cookies.set("sessionToken", response.sessionToken);   //response is UUID value for session cookie
+                window.open("welcome.html", "_self");       //open welcome.html in same tab.
+                }
+            });
+        }
+
+    </script>
+
+</head>
+<body>
+Login!
+<br>
+
+<br>
+<form id="login">
+    <div class="box-container">
+        Username: <input name ="username" id="username" type="text" class="inp">
+        <div id="usernameValidationText"></div>
+        Password: <input name ="password" id="password" type="password" class="inp">
+        <div id="passwordValidationText"></div>
+    </div>
+</form>
+<button onclick='validateForm()'>Login!</button>
+<br>
+<br>
+Or Sign Up!
+
+<br>
+
+<br>
+<form id="signup">
+    <div class="box-container">
+        Username: <input name ="Newusername" id="NewUsername" type="text" class="inp">
+        <br>
+        Password: <input name ="Newpassword" id="NewPassword" type="password" class="inp">
+        <br>
+        Confirm Password: <input name ="Newpassword" id="ConfirmPassword" type="password" class="inp">
+    </div>
+</form>
+
+<button onclick=';'>Sign-Up!</button>
+</body>
+</html>

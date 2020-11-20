@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Make Quiz</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .topnav {
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        .topnav a {
+            float: left;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .topnav a.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<div class="topnav">
+    <a href="login.html">Login</a>
+    <a href="home.html">Home</a>
+    <a href="quiz.html">Quiz</a>
+    <a href="makequiz.html">Make a Quiz</a>
+    <a href="achievements.html">Achievements</a>
+    <a href="score.html">Score</a>
+    <li style="float:right"><a class="active" href="admin.html">Admin</a></li>
+</div>
+
+<br>
+<p>Here you can make a quiz!</p>
+<p>You need to have 4 questions in your quiz.</p>
+<p>Each question needs to have 4 answers with one correct answer.</p>
+
+<form>
+    <label for="Question1">Question 1:</label><br>
+    <input type="text" id="Question1" name="Question"><br>
+
+    <label for="A1-1">Answer 1:</label>
+    <input type="text" id="A1-1" name="AnswerOne">
+    <label for="A1-2">Answer 2:</label>
+    <input type="text" id="A1-2" name="AnswerTwo"><br>
+    <label for="A1-3">Answer 3:</label>
+    <input type="text" id="A1-3" name="AnswerThree">
+    <label for="A1-4">Answer 4:</label>
+    <input type="text" id="A1-4" name="AnswerFour"><br><br>
+
+
+    Correct Answer<br>
+    <input type="radio" id="CA-1-1" name="CorrectAnswer">
+    <label for="CA-1-1">Answer 1</label>
+    <input type="radio" id="CA-1-2" name="CorrectAnswer">
+    <label for="CA-1-2">Answer 2</label>
+    <input type="radio" id="CA-1-3" name="CorrectAnswer">
+    <label for="CA-1-3">Answer 3</label>
+    <input type="radio" id="CA-1-4" name="CorrectAnswer">
+    <label for="CA-1-4">Answer 4</label><br>
+
+    <br>
+    <label for="Question2">Question 2:</label><br>
+    <input type="text" id="Question2" name="Question"><br>
+
+    <label for="A2-1">Answer 1:</label>
+    <input type="text" id="A2-1" name="AnswerOne">
+    <label for="A2-2">Answer 2:</label>
+    <input type="text" id="A2-2" name="AnswerTwo"><br>
+    <label for="A2-3">Answer 3:</label>
+    <input type="text" id="A2-3" name="AnswerThree">
+    <label for="A2-4">Answer 4:</label>
+    <input type="text" id="A2-4" name="AnswerFour"><br><br>
+
+    Correct Answer<br>
+    <input type="radio" id="CA-2-1" name="CorrectAnswer">
+    <label for="CA-2-1">Answer 1</label>
+    <input type="radio" id="CA-2-2" name="CorrectAnswer">
+    <label for="CA-2-2">Answer 2</label>
+    <input type="radio" id="CA-2-3" name="CorrectAnswer">
+    <label for="CA-2-3">Answer 3</label>
+    <input type="radio" id="CA-2-4" name="CorrectAnswer">
+    <label for="CA-2-4">Answer 4</label><br>
+
+    <br>
+    <label for="Question3">Question 3:</label><br>
+    <input type="text" id="Question3" name="Question"><br>
+
+    <label for="A3-1">Answer 1:</label>
+    <input type="text" id="A3-1" name="AnswerOne">
+    <label for="A3-2">Answer 2:</label>
+    <input type="text" id="A3-2" name="AnswerTwo"><br>
+    <label for="A3-3">Answer 3:</label>
+    <input type="text" id="A3-3" name="AnswerThree">
+    <label for="A3-4">Answer 4:</label>
+    <input type="text" id="A3-4" name="AnswerFour"><br><br>
+
+    Correct Answer<br>
+    <input type="radio" id="CA-3-1" name="CorrectAnswer">
+    <label for="CA-3-1">Answer 1</label>
+    <input type="radio" id="CA-3-2" name="CorrectAnswer">
+    <label for="CA-3-2">Answer 2</label>
+    <input type="radio" id="CA-3-3" name="CorrectAnswer">
+    <label for="CA-3-3">Answer 3</label>
+    <input type="radio" id="CA-3-4" name="CorrectAnswer">
+    <label for="CA-3-4">Answer 4</label><br>
+
+    <br>
+    <label for="Question4">Question 4:</label><br>
+    <input type="text" id="Question4" name="Question"><br>
+
+    <label for="A4-1">Answer 1:</label>
+    <input type="text" id="A4-1" name="AnswerOne">
+    <label for="A4-2">Answer 2:</label>
+    <input type="text" id="A4-2" name="AnswerTwo"><br>
+    <label for="A4-3">Answer 3:</label>
+    <input type="text" id="A4-3" name="AnswerThree">
+    <label for="A4-4">Answer 4:</label>
+    <input type="text" id="A4-4" name="AnswerFour"><br><br>
+
+    Correct Answer<br>
+    <input type="radio" id="CA-4-1" name="CorrectAnswer">
+    <label for="CA-4-1">Answer 1</label>
+    <input type="radio" id="CA-4-2" name="CorrectAnswer">
+    <label for="CA-4-2">Answer 2</label>
+    <input type="radio" id="CA-4-3" name="CorrectAnswer">
+    <label for="CA-4-3">Answer 3</label>
+    <input type="radio" id="CA-4-4" name="CorrectAnswer">
+    <label for="CA-4-4">Answer 4</label><br><br>
+
+    <input type="submit" value="Submit">
+</form>
+
+
+
+</body>
+</html>

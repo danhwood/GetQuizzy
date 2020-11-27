@@ -1,8 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+    <meta name = "viewport"  content = "width=device-width, initial-scale=1" >
+
     <meta charset="UTF-8">
-    <title>Login</title>
+    <link rel="stylesheet" href="css/navbar.css">
+
+    <title> Login </title>
+
+    <script src="js/js.cookie.js"></script>
+
     <script>
         "use strict";
 
@@ -11,7 +19,8 @@
             let valid = true;
 
             document.getElementById("usernameValidationText").innerHTML = "";
-            document.getElementById("passwordValidationText").innerHTML = "";  //clear these so if form validated again, messages are gone
+            document.getElementById("passwordValidationText").innerHTML = ""; //clear these so if form validated again, messages
+
 
             if (document.getElementById("username").value === "") {
                 document.getElementById("usernameValidationText").innerHTML = "Please enter your username.";
@@ -39,49 +48,22 @@
                 method: "POST",
                 body: formData,
             }).then(response => {
-                return response.json();                 //now return that promise to JSON
+                return response.json(); //now return that promise to JSON
             }).then(response => {
-                if (response.hasOwnProperty("Error")) {
-                alert("Username and password not recognised");
-            } else {
-                Cookies.set("sessionToken", response.sessionToken);   //response is UUID value for session cookie
-                window.open("welcome.html", "_self");       //open welcome.html in same tab.
+                if (response.hasOwnProperty("Error")
+                ) {
+                    alert("Username and password not recognised");
+                } else {
+                    Cookies.set("token", response.token); //response is UUID value for session cookie
+                    window.open("home.html", "_self"); //open welcome.html in same tab.
                 }
-            });
+            })
+            ;
         }
 
     </script>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-        }
 
-        .topnav {
-            overflow: hidden;
-            background-color: #333;
-        }
 
-        .topnav a {
-            float: left;
-            color: #f2f2f2;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-            font-size: 17px;
-        }
-
-        .topnav a:hover {
-            background-color: #ddd;
-            color: black;
-        }
-
-        .topnav a.active {
-            background-color: #4CAF50;
-            color: white;
-        }
-    </style>
 
 </head>
 <body>

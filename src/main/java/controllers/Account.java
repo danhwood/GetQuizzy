@@ -4,9 +4,8 @@ import org.glassfish.jersey.media.multipart.FormDataParam;
 import org.json.simple.JSONObject;
 import server.Main;
 
-import javax.ws.rs.CookieParam;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.UUID;
@@ -58,5 +57,35 @@ public class Account {
             System.out.println("Database error" + exception.getMessage());
             return false;
         }
+    }
+    @POST
+    @Path("new")
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    @Produces(MediaType.APPLICATION_JSON)
+    public String addUser(  @FormDataParam("username") String username,
+                            @FormDataParam("password") String password)  {
+
+        try {
+
+            if (username == null) {
+                throw new Exception("One or more form data parameters are missing in the HTTP request.");
+            }
+
+            System.out.println("/account/new username=" + username + " - Adding new admin to database");
+
+            PreparedStatement statement;
+            statement = Main.db.prepareStatement("INSERT INTO Accounts (Username, Password) VALUES (?, ?)");
+            statement.setString(1, username.toLowerCase());
+            statement.setString(2, password);
+            statement.executeUpdate();
+
+            return "{\"status\": \"OK\"}";
+
+        } catch (Exception resultsException) {
+            String error = "Database error - can't insert into 'Accounts' table: " + resultsException.getMessage();
+            System.out.println(error);
+            return "{\"error\": \"" + error + "\"}";
+        }
+
     }
 }

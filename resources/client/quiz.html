@@ -1,34 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/styles.css">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>Quiz</title>
-    <style>
-
-
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f1f1f1;
-            min-width: 160px;
-            z-index: 1;
-        }
-
-
-
-        .dropdown-content a:hover {background-color: gray;}
-
-        .dropdown:hover .dropdown-content {display: block;}
-
-        .dropdown:hover .dropbtn {background-color: gainsboro;}
-    </style>
     <script>
         "use strict";
 
@@ -42,7 +18,7 @@
             let dataHTML = "";
 
             for (let item of myJSONArray) {
-                dataHTML += "<tr><td>" + item.name + "</td><td>" + item.published + "</td><td> <button class='alertItemName' data-saleID='" + item.sales+"' data-itemID='" + item.name + "'>Click Me</button></td></tr>";
+                dataHTML += "<tr><td>" + item.name + "</td><td>" + item.published + "</td><td> <button class='alertItemName' data-saleID='" + item.sales + "' data-itemID='" + item.name + "'>Click Me</button></td></tr>";
             }
             document.getElementById("gameWithButtons").innerHTML += dataHTML;
 
@@ -53,10 +29,10 @@
                     let userName = document.getElementById("FirstName").value;
                     let lastName = document.getElementById("LastName").value;
 
-                    if((userName||lastName)=== ""){
-                        alert("Welcome" + ", you clicked on " + itemName + "and the total sales were " + saleName );
+                    if ((userName || lastName) === "") {
+                        alert("Welcome" + ", you clicked on " + itemName + "and the total sales were " + saleName);
                     } else {
-                        alert("Welcome " + userName + " " + lastName+ ", you clicked on " + itemName + "and the total sales were " + saleName );
+                        alert("Welcome " + userName + " " + lastName + ", you clicked on " + itemName + "and the total sales were " + saleName);
                     }
                 }
             });
@@ -64,36 +40,6 @@
 
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        .topnav {
-            overflow: hidden;
-            background-color: #333;
-        }
-
-        .topnav a {
-            float: left;
-            color: #f2f2f2;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-            font-size: 17px;
-        }
-
-        .topnav a:hover {
-            background-color: #ddd;
-            color: black;
-        }
-
-        .topnav a.active {
-            background-color: #4CAF50;
-            color: white;
-        }
-    </style>
 
 </head>
 <body onload="myFunction()&&pageLoad()">

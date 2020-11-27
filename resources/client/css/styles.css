@@ -1,7 +1,8 @@
 body {
     margin: 0;
     font-family: Arial, Comic Sans MS, sans-serif;
-    background-image: src=("background.jpg");
+    background-image: url("../img/background.jpg");
+    background-size contain;
 }
 
 .topnav {

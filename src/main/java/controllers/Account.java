@@ -62,13 +62,12 @@ public class Account {
 
     @POST
     @Path("add")
-    public String UsersAdd(@FormDataParam("NewUsername") String NewUsername, @FormDataParam("NewPassword") String NewPassword) {
-        System.out.println("Invoked Users.UsersAdd()");
+    public String UsersAdd(@FormDataParam("newUsername") String newUsername, @FormDataParam("newPassword") String newPassword) {
+        System.out.println("Invoked Users.UsersAdd() with new username " + newUsername);
         try {
-            PreparedStatement ps = Main.db.prepareStatement("INSERT INTO Account (NewUsername, NewPassword) VALUES (?, ?)");
-            ps.setString(1, NewUsername);
-            ps.setString(2, "User");
-            ps.setString(3, NewPassword);
+            PreparedStatement ps = Main.db.prepareStatement("INSERT INTO Accounts (Username, Password) VALUES (?, ?)");
+            ps.setString(1, newUsername);
+            ps.setString(2, newPassword);
             ps.execute();
             return "{\"OK\": \"Added user.\"}";
         } catch (Exception exception) {

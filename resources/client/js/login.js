@@ -48,7 +48,7 @@ function postUserLogin() {
     })
 }
 
-function AddUser() {
+function addUser() {
     console.log("Invoked AddUser()");
     const formData = new FormData(document.getElementById('signup'));
     let url = "/account/add";

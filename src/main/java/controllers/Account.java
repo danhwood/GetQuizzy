@@ -1,6 +1,7 @@
 package controllers;
 
 import org.glassfish.jersey.media.multipart.FormDataParam;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import server.Main;
 
@@ -58,34 +59,23 @@ public class Account {
             return false;
         }
     }
+
     @POST
-    @Path("new")
-    @Consumes(MediaType.MULTIPART_FORM_DATA)
-    @Produces(MediaType.APPLICATION_JSON)
-    public String addUser(  @FormDataParam("username") String username,
-                            @FormDataParam("password") String password)  {
-
+    @Path("add")
+    public String UsersAdd(@FormDataParam("NewUsername") String NewUsername, @FormDataParam("NewPassword") String NewPassword) {
+        System.out.println("Invoked Users.UsersAdd()");
         try {
-
-            if (username == null) {
-                throw new Exception("One or more form data parameters are missing in the HTTP request.");
-            }
-
-            System.out.println("/account/new username=" + username + " - Adding new admin to database");
-
-            PreparedStatement statement;
-            statement = Main.db.prepareStatement("INSERT INTO Accounts (Username, Password) VALUES (?, ?)");
-            statement.setString(1, username.toLowerCase());
-            statement.setString(2, password);
-            statement.executeUpdate();
-
-            return "{\"status\": \"OK\"}";
-
-        } catch (Exception resultsException) {
-            String error = "Database error - can't insert into 'Accounts' table: " + resultsException.getMessage();
-            System.out.println(error);
-            return "{\"error\": \"" + error + "\"}";
+            PreparedStatement ps = Main.db.prepareStatement("INSERT INTO Account (NewUsername, NewPassword) VALUES (?, ?)");
+            ps.setString(1, NewUsername);
+            ps.setString(2, "User");
+            ps.setString(3, NewPassword);
+            ps.execute();
+            return "{\"OK\": \"Added user.\"}";
+        } catch (Exception exception) {
+            System.out.println("Database error: " + exception.getMessage());
+            return "{\"Error\": \"Unable to create new item, please see server console for more info.\"}";
         }
 
     }
 }
+

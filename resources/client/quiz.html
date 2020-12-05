@@ -7,8 +7,38 @@
     <title>Quiz</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <script>
+        "use strict";
+
+        function pageLoad() {
+            console.log("Invoked getQuizList()");
+
+            const url = "/quiz/list";
+
+            fetch(url, {
+                method: "GET",
+            }).then(response => {
+                return response.json();                 //return response to JSON
+            }).then(response => {
+                if (response.hasOwnProperty("Error")) { //checks if response from server has a key "Error"
+                    alert(JSON.stringify(response));    // if it does, convert JSON object to string and alert
+                } else {
+                    formatQuizList(response);
+                }
+            });
+        }
+
+        function formatQuizList(response){
+            console.log(response);
+
+
+        }
+
+    </script>
+
+
 </head>
-<body onload="myFunction()&&quizLoad()">
+<body onload="pageLoad()">
 
 <div class="topnav">
     <a href="login.html">Login</a>

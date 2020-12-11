@@ -8,14 +8,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <script>
+
         "use strict";
 
-        function pageLoad() {
-            console.log("Invoked getQuizList()");
+        function loadQuiz() {
 
-            const url = "/quiz/list";
+            console.log("Invoked loadQuiz()");
 
-            fetch(url, {
+            var e = document.getElementById("ddlSelectQuiz");
+            var quizID = e.value;
+
+
+            const url = "/question/get/";
+
+            fetch(url + quizID, {
                 method: "GET",
             }).then(response => {
                 return response.json();                 //return response to JSON
@@ -26,19 +32,22 @@
                     formatQuizList(response);
                 }
             });
+
+
         }
 
-        function formatQuizList(response){
+
+
+        function formatQuizList(response) {
             console.log(response);
-
-
         }
+
 
     </script>
 
 
 </head>
-<body onload="pageLoad()">
+<body>
 
 <div class="topnav">
     <a href="login.html">Login</a>
@@ -57,17 +66,22 @@
     Last Name: <input id="LastName" type="text" class="inp">
 </div>
 <br>
-<div class="dropdown">
-    <button class="dropbtn">Select a Quiz</button>
-    <div class="dropdown-content">
-        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">1</a>
-        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">2</a>
-        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">3</a>
-    </div>
-</div>
+
+<select id="ddlSelectQuiz">
+    <option value="1">Quiz 1</option>
+    <option value="2" selected="selected">Quiz 2</option>
+    <option value="3">Quiz 3</option>
+</select>
+
+<button onclick="loadQuiz()">Do Quiz!</button>
+
 
 <BR>
 <table id="gameWithButtons" class="box-container"></table>
+
+<div class="logout">
+    <button onclick='logout()'>Logout</button>
+</div>
 
 </body>
 </html>

@@ -22,8 +22,8 @@ public class Question {
             ps.setInt(1, quizId);
             ResultSet results = ps.executeQuery();
             JSONArray response = new JSONArray();
-            JSONObject row = new JSONObject();
-            if (results.next() == true) {
+            while (results.next()) {
+                JSONObject row = new JSONObject();
                 row.put("QuestionID", results.getInt(1));
                 row.put("Question", results.getString(2));
                 row.put("AnswerOne", results.getString(3));

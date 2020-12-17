@@ -41,7 +41,15 @@
         function formatQuizList(response) {
             console.log(response);
         }
-
+        let dataHTML="";
+        function formatList(response) {
+            for (let item of response){
+                dataHTML +="<tr><td>" +item.Question +"</td><td>" +item.AnswerOne +"</td><td>" +item.AnswerTwo +"</td><td>" +item.AnswerThree +"</td><td>" +item.AnswerFour +"</td>" +
+                    "<td> <button onclick='loadQuiz(" + item.QuestionID + ")'>Do Quiz!</button></td></tr>";
+                console.log("Invoked formatList()")
+            }
+            document.getElementById("tblQuiz").innerHTML = dataHTML;
+        }
 
     </script>
 
@@ -73,15 +81,11 @@
     <option value="3">Quiz 3</option>
 </select>
 
-<button onclick="loadQuiz()">Do Quiz!</button>
-
-
+<button onclick="formatList()">Load Quiz</button>
+<table  id="tblQuiz"> </table>
 <BR>
 <table id="gameWithButtons" class="box-container"></table>
 
-<div class="logout">
-    <button onclick='logout()'>Logout</button>
-</div>
 
 </body>
 </html>

@@ -12,12 +12,10 @@
         "use strict";
 
         function loadQuiz() {
-
             console.log("Invoked loadQuiz()");
 
             var e = document.getElementById("ddlSelectQuiz");
             var quizID = e.value;
-
 
             const url = "/question/get/";
 
@@ -33,22 +31,21 @@
                 }
             });
 
-
         }
-
-
 
         function formatQuizList(response) {
             console.log(response);
-        }
-        let dataHTML="";
-        function formatList(response) {
-            for (let item of response){
-                dataHTML +="<tr><td>" +item.Question +"</td><td>" +item.AnswerOne +"</td><td>" +item.AnswerTwo +"</td><td>" +item.AnswerThree +"</td><td>" +item.AnswerFour +"</td>" +
+
+            let dataHTML = "";
+
+
+            for (let item of response) {
+                dataHTML += "<tr><td>" + item.Question + "</td><td>" + item.AnswerOne + "</td><td>" + item.AnswerTwo + "</td><td>" + item.AnswerThree + "</td><td>" + item.AnswerFour + "</td>" +
                     "<td> <button onclick='loadQuiz(" + item.QuestionID + ")'>Do Quiz!</button></td></tr>";
                 console.log("Invoked formatList()")
             }
             document.getElementById("tblQuiz").innerHTML = dataHTML;
+
         }
 
     </script>
@@ -81,8 +78,8 @@
     <option value="3">Quiz 3</option>
 </select>
 
-<button onclick="formatList()">Load Quiz</button>
-<table  id="tblQuiz"> </table>
+<button onclick="loadQuiz()">Load Quiz</button>
+<table id="tblQuiz"></table>
 <BR>
 <table id="gameWithButtons" class="box-container"></table>
 

@@ -40,6 +40,7 @@ function postUserLogin() {
         if (response.hasOwnProperty("Error")
         ) {
             alert("Username and password not recognised");
+            alert(JSON.stringify(response));
         } else {
             Cookies.set("token", response.token); //response is UUID value for session cookie
             Cookies.set("username", response.username);

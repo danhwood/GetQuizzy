@@ -32,7 +32,6 @@ public class Question {
                 row.put("AnswerFour", results.getString(6));
                 row.put("CorrectAnswer", results.getString(7));
                 response.add(row);
-                System.out.println("Completed API");
             }
             return response.toString();
         } catch (Exception exception) {
